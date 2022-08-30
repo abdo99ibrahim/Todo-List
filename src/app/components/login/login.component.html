@@ -1,0 +1,24 @@
+<div class="container">
+  <div [formGroup]="formLogin" class="w-50">
+    <div class="mb-3">
+      <label class="form-label">Email address</label>
+      <input formControlName="Email" type="email" class="form-control" [class.is-valid]="isValidControl('Email')" [class.is-invalid]="isInValidAndTouched('Email')">
+      <!-- <div *ngIf="formLogin.controls['Email'].errors" class="form-text text-danger">Invalid Email</div> -->
+        <div *ngIf="isInValidAndTouched('Email')">
+          <small class="form-text text-danger" *ngIf="isControlHasError('Email','required')">required email</small>
+          <small class="form-text text-danger" *ngIf="isControlHasError('Email','pattern')">valid pattern of email</small>
+        </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input formControlName="Password" type="password" class="form-control" [class.is-valid]="isValidControl('Password')" [class.is-invalid]="isInValidAndTouched('Password')">
+      <div *ngIf="isInValidAndTouched('Password')">
+        <small  class="form-text text-danger" *ngIf="isControlHasError('Password','required')">required Password</small>
+        <small  class="form-text text-danger" *ngIf="isControlHasError('Password','minlength')">min length 8</small>
+        <small  class="form-text text-danger" *ngIf="isControlHasError('Password','maxlength')">max length 20</small>
+      </div>
+    </div>
+    <button [disabled]="formLogin.invalid" (click)="login()" type="button" class="btn btn-primary">Submit</button>
+  </div>
+
+</div>
