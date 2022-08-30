@@ -11,6 +11,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { DetailsComponent } from './components/details/details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
+import { ArabicDatePipe } from './pipes/arabic-date.pipe';
+import { MaxLengthPipe } from './pipes/max-length.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { LoginComponent } from './components/login/login.component';
     ContactComponent,
     DetailsComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    ArabicDatePipe,
+    MaxLengthPipe
   ],
   imports: [
     BrowserModule,

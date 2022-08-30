@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
   name: string = "Abdelrahman Ibrahim";
+  id:number= 1000000;
   constructor(private _httpCient:HttpClient) { }
 
   ngOnInit(): void {
