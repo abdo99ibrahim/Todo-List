@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class AboutComponent implements OnInit {
 
   constructor() { }
-
+  aboutRate=4;
   ngOnInit(): void {
   }
-
+  onAboutRatingChanged(newRate:number):void{
+    this.aboutRate=newRate;
+  }
 }

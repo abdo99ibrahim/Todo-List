@@ -13,6 +13,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
 import { ArabicDatePipe } from './pipes/arabic-date.pipe';
 import { MaxLengthPipe } from './pipes/max-length.pipe';
+import { HeaderComponent } from './components/header/header.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MaxLengthPipe } from './pipes/max-length.pipe';
     NotFoundComponent,
     LoginComponent,
     ArabicDatePipe,
-    MaxLengthPipe
+    MaxLengthPipe,
+    HeaderComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
