@@ -19,7 +19,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
 
-
+  {
+      path: 'task',
+      loadChildren: () => import('./components/task/task.module').then(m => m.TaskModule)
+  },
   {path:'',component:HomeComponent},
   {path:'**',component:NotFoundComponent},
 ];
