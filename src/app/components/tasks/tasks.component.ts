@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from './../../models/task';
 import { HttpClient } from '@angular/common/http';
+import { TaskService } from 'src/app/services/task.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
@@ -11,10 +14,13 @@ export class TasksComponent implements OnInit {
   tasks: Task[] = [];
   name: string = "Abdelrahman Ibrahim";
   id:number= 1000000;
-  constructor(private _httpCient:HttpClient) { }
+  constructor(private _taskService:TaskService,private _userService:UserService,private _router:Router) { }
 
   ngOnInit(): void {
-    this._httpCient.get(`https://api.mohamed-sadek.com/task/get`).subscribe(
+    if(!this._userService.isLoggedIn()){
+      this._router.navigateByUrl('/login')
+    }
+    this._taskService.get().subscribe(
       (response:any)=>{
         // alert("Alert 1");
         console.log(JSON.stringify(response));
@@ -27,7 +33,7 @@ export class TasksComponent implements OnInit {
   add(title: string): void {
     let task = new Task();
     task.Title = title;
-    this._httpCient.post(`https://api.mohamed-sadek.com/task/post`,task).subscribe(
+    this._taskService.post(task).subscribe(
       (response:any)=>{
         this.tasks.push(task);
       },(error:any)=>{
@@ -38,7 +44,7 @@ export class TasksComponent implements OnInit {
 
   update(task: Task): void {
     task.IsDone =! task.IsDone;
-    this._httpCient.put(`https://api.mohamed-sadek.com/task/put`,task).subscribe(
+    this._taskService.put(task).subscribe(
       (response:any)=>{
       },(error:any)=>{
       }
@@ -47,7 +53,7 @@ export class TasksComponent implements OnInit {
 
   delete(index: number): void {
     let task = this.tasks[index];
-    this._httpCient.delete(`https://api.mohamed-sadek.com/Task/Delete?id=${task.ID}`).subscribe(
+    this._taskService.delete(task.ID).subscribe(
       (response:any)=>{
         this.tasks.splice(index, 1);
       },(error:any)=>{

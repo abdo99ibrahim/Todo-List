@@ -15,6 +15,7 @@ import { ArabicDatePipe } from './pipes/arabic-date.pipe';
 import { MaxLengthPipe } from './pipes/max-length.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RatingComponent } from './components/rating/rating.component';
     ArabicDatePipe,
     MaxLengthPipe,
     HeaderComponent,
-    RatingComponent
+    RatingComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
