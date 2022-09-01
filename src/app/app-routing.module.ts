@@ -1,29 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { DetailsComponent } from './components/details/details.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { LogoutComponent } from './components/logout/logout.component';
+import { LayoutComponent } from './components/layout/layout.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { TasksComponent } from './components/tasks/tasks.component';
-import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
-  {path:'task/details/:id',component:DetailsComponent},
-  { path: 'task', component: TasksComponent, canActivate:[AuthGuard]},
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent },
-
+  {
+    path: '',
+    component:LayoutComponent,
+    loadChildren: () => import('./components/profile/profile.module').then(m => m.ProfileModule)
+  },
   {
       path: 'task',
+      component:LayoutComponent,
       loadChildren: () => import('./components/task/task.module').then(m => m.TaskModule)
   },
-  {path:'',component:HomeComponent},
+  {
+    path: 'user',
+    loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
+  },
+  // {path:'',component:HomeComponent},
   {path:'**',component:NotFoundComponent},
 ];
 

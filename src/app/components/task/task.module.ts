@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { DetailsComponent } from '../details/details.component';
-import { TasksComponent } from '../tasks/tasks.component';
+import { DetailsComponent } from './details/details.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { TasksComponent } from './tasks/tasks.component';
+import { SharedModule } from '../shared/shared.module';
 
 // Internal Routing
 const routes: Routes = [
-  {path:'task/details/:id',component:DetailsComponent},
-  { path: 'task', component: TasksComponent, canActivate:[AuthGuard]},
-  {path:'',component:TasksComponent},
+  {path:'details/:id',component:DetailsComponent},
+  { path: '', component: TasksComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [TasksComponent,DetailsComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ]
 })
 export class TaskModule { }

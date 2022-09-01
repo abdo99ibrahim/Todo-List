@@ -8,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ContactComponent implements OnInit {
 
   constructor() { }
+  contactUsRate=4;
 
   ngOnInit(): void {
+  }
+  onContactUsRatingChanged(rate:number):void
+  {
+    this.contactUsRate=rate;
+//Call API
+
   }
 
 }

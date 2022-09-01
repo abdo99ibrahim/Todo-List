@@ -19,10 +19,10 @@
           <a class="nav-link" routerLink="/task">Tasks ({{taskCounter}})</a>
         </li>
         <li class="nav-item" *ngIf="!isLogged">
-          <a class="nav-link" routerLink="/login">Login</a>
+          <a class="nav-link" routerLink="/user/login">Login</a>
         </li>
         <li class="nav-item" *ngIf="isLogged">
-          <a class="nav-link" routerLink="/logout">Logout</a>
+          <a class="nav-link" routerLink="/user/logout">Logout</a>
         </li>
       </ul>
     </div>

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from './../../models/task';
-import { HttpClient } from '@angular/common/http';
 import { TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { Task } from 'src/app/models/task';
 
 @Component({
   selector: 'app-tasks',
@@ -18,7 +17,7 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
     if(!this._userService.isLoggedIn()){
-      this._router.navigateByUrl('/login')
+      this._router.navigateByUrl('/user/login')
     }
     this._taskService.get().subscribe(
       (response:any)=>{
