@@ -13,6 +13,7 @@ import { LayoutComponent } from './components/layout/layout.component';
     NotFoundComponent,
     HeaderComponent,
     LayoutComponent,
+
   ],
   imports: [
     BrowserModule,
